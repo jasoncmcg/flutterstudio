@@ -11,10 +11,11 @@ description: A code generator for flutter
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.0.1
 
 environment:
-  sdk: ">=2.5.0 <3.0.0"
+  sdk: ">3.0.0"
+  # sdk: ">=2.5.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -22,24 +23,24 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
-  rxdart: ^0.22.0
-  font_awesome_flutter: ^8.4.0
-  share: any
-  path_provider: any
-  simple_permissions: any
+  # cupertino_icons: ^0.1.2
+  # rxdart: ^0.22.0
+  # font_awesome_flutter: ^8.4.0
+  # share: any
+  # path_provider: any
+  # simple_permissions: any
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.7.3"
+  # flutter_launcher_icons: "^0.7.3"
 
-flutter_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/app_launcher_icon_legacy.png"
-  adaptive_icon_background: "#003A60"
-  adaptive_icon_foreground: "assets/images/app_launcher_icon.png"
+# flutter_icons:
+#   android: true
+#   ios: true
+#   image_path: "assets/images/app_launcher_icon_legacy.png"
+#   adaptive_icon_background: "#003A60"
+#   adaptive_icon_foreground: "assets/images/app_launcher_icon.png"
 
 
 

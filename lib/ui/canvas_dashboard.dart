@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_studio/bloc/provider.dart';
 import 'package:flutter_studio/material_menu.dart';
 
@@ -15,7 +15,6 @@ class StudioDashboard extends StatefulWidget {
 }
 
 class _StudioDashboardState extends State<StudioDashboard> {
-
   GlobalKey<FormState> _formKey = GlobalKey(debugLabel: "Dashboard Form Key");
   PageController _pageController = PageController();
   double _widgetMenuHeight = 150.0;
@@ -27,7 +26,6 @@ class _StudioDashboardState extends State<StudioDashboard> {
 
   @override
   Widget build(BuildContext context) {
-
     final _bloc = Provider.of(context);
 
     return Stack(
@@ -43,7 +41,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
             automaticallyImplyLeading: false,
             elevation: 0.0,
             centerTitle: true,
-            title:  Image.asset(
+            title: Image.asset(
               "assets/images/flutter_studio_logo.png",
               alignment: Alignment.topLeft,
               width: 100,
@@ -53,7 +51,8 @@ class _StudioDashboardState extends State<StudioDashboard> {
                 icon: Icon(Icons.refresh),
                 onPressed: () {
                   setState(() {
-                    previewAppBar = previewBody = previewFloatingActionButton = null;
+                    previewAppBar =
+                        previewBody = previewFloatingActionButton = null;
                   });
                 },
               ),
@@ -72,19 +71,13 @@ class _StudioDashboardState extends State<StudioDashboard> {
                       fit: FlexFit.loose,
                       child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 60.0,
-                              vertical: 10.0
-                          ),
+                              horizontal: 60.0, vertical: 10.0),
                           child: Text(
                             "Use the widgets panel to start building",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                height: 1.1,
-                                color: Colors.white,
-                                fontSize: 12
-                            ),
-                          )
-                      ),
+                                height: 1.1, color: Colors.white, fontSize: 12),
+                          )),
                     ),
                     Flexible(
                       flex: 10,
@@ -96,9 +89,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                               vertical: 20.0,
                               horizontal: 60.0,
                             ),
-                            decoration: BoxDecoration(
-                                color: Colors.white
-                            ),
+                            decoration: BoxDecoration(color: Colors.white),
                             child: Scaffold(
                               appBar: previewAppBar,
                               body: previewBody,
@@ -111,12 +102,11 @@ class _StudioDashboardState extends State<StudioDashboard> {
                               horizontal: 50.0,
                             ),
                             decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.25)
-                            ),
+                                color: Colors.white.withOpacity(0.25)),
                             child: StreamBuilder<String>(
                                 stream: _bloc.getGeneratedCode,
                                 builder: (context, snapshot) {
-                                  if(!snapshot.hasData) {
+                                  if (!snapshot.hasData) {
                                     return Container();
                                   }
 
@@ -128,12 +118,11 @@ class _StudioDashboardState extends State<StudioDashboard> {
                                       ),
                                     ),
                                   );
-                                }
-                            ),
+                                }),
                           ),
                         ],
                         onPageChanged: (index) {
-                          if(index == 1) {
+                          if (index == 1) {
                             _bloc.setSelectedMenu("codeOptions");
                           } else {
                             _bloc.setSelectedMenu("none");
@@ -160,8 +149,8 @@ class _StudioDashboardState extends State<StudioDashboard> {
                           stream: _bloc.getSelectedMenu,
                           initialData: "none",
                           builder: (context, snapshot) {
-                            if(snapshot.hasData) {
-                              switch(snapshot.data) {
+                            if (snapshot.hasData) {
+                              switch (snapshot.data) {
                                 case "none":
                                   return defaultMenu(_bloc);
 
@@ -173,16 +162,14 @@ class _StudioDashboardState extends State<StudioDashboard> {
                                       renderFloatingActionButton,
                                       onButtonPressed,
                                       counter,
-                                      centerWidgetCallback
-                                  );
+                                      centerWidgetCallback);
 
                                 case "codeOptions":
                                   return codeMenu(_bloc);
                               }
                             }
                             return defaultMenu(_bloc);
-                          }
-                      ),
+                          }),
                     ),
                   ),
                 )
@@ -203,10 +190,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
           color: Colors.transparent,
           child: Text(
             "Widgets Menu",
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500
-            ),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
             textAlign: TextAlign.center,
           ),
           highlightColor: Colors.transparent,
@@ -230,14 +214,14 @@ class _StudioDashboardState extends State<StudioDashboard> {
                   child: Text(
                     "Material",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300
-                    ),
+                        color: Colors.white, fontWeight: FontWeight.w300),
                   ),
                 )
               ],
             ),
-            SizedBox(width: 40,),
+            SizedBox(
+              width: 40,
+            ),
             Column(
               children: <Widget>[
                 IconButton(
@@ -253,14 +237,14 @@ class _StudioDashboardState extends State<StudioDashboard> {
                   child: Text(
                     "Cupertino",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300
-                    ),
+                        color: Colors.white, fontWeight: FontWeight.w300),
                   ),
                 )
               ],
             ),
-            SizedBox(width: 40,),
+            SizedBox(
+              width: 40,
+            ),
             Column(
               children: <Widget>[
                 IconButton(
@@ -276,9 +260,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                   child: Text(
                     "Native",
                     style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w300
-                    ),
+                        color: Colors.white, fontWeight: FontWeight.w300),
                   ),
                 )
               ],
@@ -298,10 +280,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
           color: Colors.transparent,
           child: Text(
             "Code Options",
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w500
-            ),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
             textAlign: TextAlign.center,
           ),
           highlightColor: Colors.transparent,
@@ -330,9 +309,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                     child: Text(
                       "Share",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -352,9 +329,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                     child: Text(
                       "Copy",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -374,9 +349,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                     child: Text(
                       "Write to File",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -396,9 +369,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                     child: Text(
                       "GitHub",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -408,9 +379,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                   IconButton(
                     icon: Icon(FontAwesomeIcons.stackOverflow),
                     color: Colors.white,
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     iconSize: 36,
                   ),
                   Padding(
@@ -418,9 +387,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
                     child: Text(
                       "Ask",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -433,7 +400,7 @@ class _StudioDashboardState extends State<StudioDashboard> {
   }
 
   void expandCollapseMenu() {
-    if(_widgetMenuHeight == 150.0) {
+    if (_widgetMenuHeight == 150.0) {
       setState(() {
         _widgetMenuHeight = MediaQuery.of(context).size.height - 80.0;
       });
@@ -448,14 +415,12 @@ class _StudioDashboardState extends State<StudioDashboard> {
     setState(() {
       previewAppBar = appBar;
     });
-    _bloc.generateCode(
-        '''
+    _bloc.generateCode('''
 appBar: ${appBar.toString()}(
   title: ${appBar.title.toString()}
 ),
 404Found
-'''
-    );
+''');
   }
 
   void centerWidgetCallback() {
@@ -469,24 +434,20 @@ appBar: ${appBar.toString()}(
       setState(() {
         previewBody = body;
       });
-      _bloc.generateCode(
-          '''
+      _bloc.generateCode('''
   body: ${body.toString()},
   404Found
-'''
-      );
+''');
     } else {
       setState(() {
         previewBody = Center(child: body);
       });
-      _bloc.generateCode(
-          '''
+      _bloc.generateCode('''
   body: Center(
     child: ${body.toString()},
   ),
   404Found
-'''
-      );
+''');
     }
   }
 
@@ -494,14 +455,12 @@ appBar: ${appBar.toString()}(
     setState(() {
       previewFloatingActionButton = button;
     });
-    _bloc.generateCode(
-        '''
+    _bloc.generateCode('''
   floatingActionButton: ${button.toString()} (
     child: ${button.child.toString()},
     onPressed: () {}
 )   
-'''
-    );
+''');
   }
 
   void onButtonPressed() {
@@ -509,5 +468,5 @@ appBar: ${appBar.toString()}(
       counter++;
     });
   }
-
 }
+

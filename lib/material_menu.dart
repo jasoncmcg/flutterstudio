@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_studio/bloc/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MaterialWidgetMenu extends StatefulWidget {
   final VoidCallback expandCollapseMenuCallback;
   final void Function(AppBar appBar, dynamic bloc) updateAppBarCallback;
   final VoidCallback centerWidgetCallback;
   final void Function(Widget body, dynamic bloc) updateBodyCallback;
-  final void Function(FloatingActionButton button, dynamic bloc) updateFabCallback;
+  final void Function(FloatingActionButton button, dynamic bloc)
+      updateFabCallback;
   final VoidCallback updateCounterCallback;
   int counter;
 
-  MaterialWidgetMenu(this.expandCollapseMenuCallback, this.updateAppBarCallback,
-      this.updateBodyCallback, this.updateFabCallback, this.updateCounterCallback, this.counter, this.centerWidgetCallback);
+  MaterialWidgetMenu(
+      this.expandCollapseMenuCallback,
+      this.updateAppBarCallback,
+      this.updateBodyCallback,
+      this.updateFabCallback,
+      this.updateCounterCallback,
+      this.counter,
+      this.centerWidgetCallback);
 
   @override
   _MaterialWidgetMenuState createState() => _MaterialWidgetMenuState();
@@ -22,7 +30,6 @@ class _MaterialWidgetMenuState extends State<MaterialWidgetMenu> {
   AppBar _appBar;
   Widget _body;
   FloatingActionButton _floatingActionButton;
-
 
   @override
   Widget build(BuildContext context) {
@@ -64,13 +71,11 @@ class _MaterialWidgetMenuState extends State<MaterialWidgetMenu> {
                     icon: Icon(FontAwesomeIcons.solidObjectGroup),
                     color: Colors.white,
                     onPressed: () {
-                      _bloc.generateCode(
-'''
+                      _bloc.generateCode('''
 Scaffold(
   404Found,
 )
-'''
-                      );
+''');
                     },
                     iconSize: 36,
                   ),
@@ -79,8 +84,7 @@ Scaffold(
                     child: Text(
                       "Sacffold",
                       style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -105,8 +109,7 @@ Scaffold(
                     child: Text(
                       "AppBar",
                       style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.w300
-                      ),
+                          color: Colors.white, fontWeight: FontWeight.w300),
                     ),
                   )
                 ],
@@ -159,12 +162,11 @@ Scaffold(
                     color: Colors.white,
                     onPressed: () {
                       widget.updateFabCallback(
-                        FloatingActionButton(
-                          onPressed: widget.updateCounterCallback,
-                          child: Icon(Icons.add),
-                        ),
-                        _bloc
-                      );
+                          FloatingActionButton(
+                            onPressed: widget.updateCounterCallback,
+                            child: Icon(Icons.add),
+                          ),
+                          _bloc);
                     },
                     iconSize: 48,
                   ),
